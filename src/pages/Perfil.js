@@ -2,12 +2,12 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/Header';
 
-function Recipes() {
+function Perfil() {
   return (
     <div className="meals">
-      <Header title="Comidas" />
+      <Header title="Perfil" />
     </div>
   );
 }
 
-export default Recipes;
+export default Perfil;
