@@ -13,8 +13,11 @@ function Login() {
     }
   }
 
-  function handleSubmit() {
-
+  function handleClick() {
+    const { email } = login;
+    localStorage.setItem('user', JSON.stringify({ email }));
+    localStorage.setItem('mealsToken', JSON.stringify(1));
+    localStorage.setItem('cocktailsToken', JSON.stringify(1));
   }
 
   return (
@@ -34,9 +37,9 @@ function Login() {
           onChange={ ({ target: { value } }) => setLogin({ ...login, senha: value }) }
         />
         <button
-          type="submit"
+          type="button"
           data-testid="login-submit-btn"
-          onSubmit={ handleSubmit }
+          onClick={ handleClick }
           disabled={ statusLogin }
         >
           Entrar
