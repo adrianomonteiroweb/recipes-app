@@ -1,15 +1,17 @@
 import React from 'react';
-import './App.css';
-import { BrowserRouter } from 'react-router-dom';
-// import rockGlass from './images/rockGlass.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route } from 'react-router';
 import Routes from './Routes';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './pages/Login';
+import MyProvider from './context/MyProvider';
 
 function App() {
   return (
-    <BrowserRouter>
+    <MyProvider>
       <Routes />
-    </BrowserRouter>
+      <Route path="/" component={ Login } />
+    </MyProvider>
   );
 }
 
