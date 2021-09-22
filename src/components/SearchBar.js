@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import recipesContext from '../context/recipesContext';
+import MyContext from '../context/MyContext';
 
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const { searchBar: { setEndpoint, setQuery } } = useContext(recipesContext);
+  const { searchBar: { setEndpoint, setQuery } } = useContext(MyContext);
   const [filter, setFilter] = useState('');
 
   const logSearch = () => {
