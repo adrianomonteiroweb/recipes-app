@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import MyContext from '../context/MyContext';
 
 function Login() {
@@ -36,14 +37,18 @@ function Login() {
           placeholder="Senha"
           onChange={ ({ target: { value } }) => setLogin({ ...login, senha: value }) }
         />
-        <button
-          type="button"
-          data-testid="login-submit-btn"
+        <Link
+          to="/comidas"
           onClick={ handleClick }
-          disabled={ statusLogin }
         >
-          Entrar
-        </button>
+          <button
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={ statusLogin }
+          >
+            Entrar
+          </button>
+        </Link>
       </form>
     </section>
   );
