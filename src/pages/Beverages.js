@@ -4,17 +4,17 @@ import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import recipesContext from '../context/recipesContext';
 
-function Recipes() {
+function Beverages() {
   const { searchBar: { query, endpoint } } = useContext(recipesContext);
 
-  useFetch(query, endpoint, true);
+  useFetch(query, endpoint);
 
   return (
-    <div className="meals container">
-      <Header title="Comidas" />
+    <div className=" container">
+      <Header title="Bebidas" />
       <section />
     </div>
   );
 }
 
-export default Recipes;
+export default Beverages;

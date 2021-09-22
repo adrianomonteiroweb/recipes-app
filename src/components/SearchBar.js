@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import recipesContext from '../context/recipesContext';
 
 function SearchBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const { searchBar: { setEndpoint, setQuery } } = useContext(recipesContext);
+  const [filter, setFilter] = useState('');
+
+  const logSearch = () => {
+    if (searchQuery.length > 1 && filter === 'firstLetter') {
+      return global.alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+    setEndpoint(filter);
+    setQuery(searchQuery);
+  };
+
   return (
-    <div className="search-container">
-      <input type="text" data-testid="search-input" />
+    <div className="">
+      <input
+        type="text"
+        value={ searchQuery }
+        data-testid="search-input"
+        onChange={ ({ target }) => setSearchQuery(target.value) }
+      />
       <div>
 
         <label htmlFor="ingredient">
@@ -13,11 +32,18 @@ function SearchBar() {
             data-testid="ingredient-search-radio"
             name="radio"
             id="ingredient"
+            onChange={ ({ target }) => setFilter(target.id) }
           />
           Ingrediente
         </label>
         <label htmlFor="name">
-          <input type="radio" data-testid="name-search-radio" name="radio" id="name" />
+          <input
+            type="radio"
+            data-testid="name-search-radio"
+            name="radio"
+            id="name"
+            onChange={ ({ target }) => setFilter(target.id) }
+          />
           Nome
         </label>
         <label htmlFor="firstLetter">
@@ -26,11 +52,18 @@ function SearchBar() {
             data-testid="first-letter-search-radio"
             name="radio"
             id="firstLetter"
+            onChange={ ({ target }) => setFilter(target.id) }
           />
           Primeira letra
         </label>
       </div>
-      <button type="button" data-testid="exec-search-btn">Buscar</button>
+      <button
+        type="button"
+        data-testid="exec-search-btn"
+        onClick={ () => logSearch() }
+      >
+        Buscar
+      </button>
     </div>
   );
 }

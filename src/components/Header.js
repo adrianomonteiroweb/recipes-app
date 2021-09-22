@@ -10,8 +10,8 @@ function Header({ title }) {
   const [searchBar, setSearchBar] = useState(false);
 
   return (
-    <header>
-      <div>
+    <header className="container">
+      <div className="row justify-content-around align-items-center">
         <Link to="/perfil">
           <img src={ profileIcon } alt="Profile" data-testid="profile-top-btn" />
         </Link>
