@@ -16,7 +16,7 @@ function Recipes() {
 
   const categoriesData = useFetch('list', 'categories', true);
 
-  if (meals && meals.length < 2) {
+  if (meals && meals.length < 2 && endpoint !== 'byCategory') {
     return <Redirect to={ `/comidas/${meals[0].idMeal}` } />;
   }
 
