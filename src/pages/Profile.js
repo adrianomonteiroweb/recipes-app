@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/Header';
 
-function Perfil() {
+function Profile() {
   return (
     <div className="meals">
       <Header title="Perfil" />
@@ -10,4 +10,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default Profile;

@@ -1,0 +1,8 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-filters {
+  display: flex;
+}

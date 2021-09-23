@@ -4,37 +4,38 @@ import { Redirect } from 'react-router';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
-import MealCard from '../components/MealCard';
+import BeverageCard from '../components/BeverageCard';
 
 const TWELVE = 12;
 
-function Recipes() {
+function Beverages() {
   const { searchBar: { query, endpoint } } = useContext(MyContext);
 
-  const { meals } = useFetch(query, endpoint, true);
+  const { drinks } = useFetch(query, endpoint);
 
-  if (meals && meals.length < 2) {
-    return <Redirect to={ `/comidas/${meals[0].idMeal}` } />;
+  if (drinks && drinks.length < 2) {
+    return <Redirect to={ `/bebidas/${drinks[0].idDrink}` } />;
   }
 
-  if (meals) {
-    const newMeals = meals.slice(0, TWELVE);
-    console.log(newMeals);
+  if (drinks) {
+    const newDrinks = drinks.slice(0, TWELVE);
+
     return (
-      <div className="meals container">
-        <Header title="Comidas" />
+      <div className=" container">
+        <Header title="Bebidas" />
         <section>
-          {newMeals.map((meal, i) => <MealCard meal={ meal } key={ i } index={ i } />)}
+          {newDrinks
+            .map((drink, i) => <BeverageCard key={ i } beverage={ drink } index={ i } />)}
         </section>
       </div>
     );
   }
 
-  if (meals === null) {
+  if (drinks === null) {
     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
   return <h1>Loading...</h1>;
 }
 
-export default Recipes;
+export default Beverages;
