@@ -9,7 +9,7 @@ function Categories({ list }) {
   const { searchBar: { setEndpoint, setQuery, query, endpoint } } = useContext(MyContext);
 
   const logSearch = (cat) => {
-    if (query && endpoint) {
+    if (query === cat && endpoint) {
       setEndpoint('');
       return setQuery('');
     }
