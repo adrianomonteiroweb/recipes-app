@@ -6,9 +6,13 @@ const FIVE = 5;
 
 function Categories({ list }) {
   const categoriesList = list.slice(0, FIVE);
-  const { searchBar: { setEndpoint, setQuery } } = useContext(MyContext);
+  const { searchBar: { setEndpoint, setQuery, query, endpoint } } = useContext(MyContext);
 
   const logSearch = (cat) => {
+    if (query && endpoint) {
+      setEndpoint('');
+      return setQuery('');
+    }
     setEndpoint('byCategory');
     setQuery(cat);
   };
