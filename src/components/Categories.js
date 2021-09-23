@@ -9,7 +9,7 @@ function Categories({ list }) {
   const { searchBar: { setEndpoint, setQuery, query, endpoint } } = useContext(MyContext);
 
   const logSearch = (cat) => {
-    if (query === cat && endpoint) {
+    if ((query === cat && endpoint) || !cat) {
       setEndpoint('');
       return setQuery('');
     }
@@ -19,6 +19,13 @@ function Categories({ list }) {
 
   return (
     <section>
+      <button
+        type="button"
+        onClick={ () => logSearch() }
+        data-testid="All-category-filter"
+      >
+        All
+      </button>
       {categoriesList.map(({ strCategory }, i) => (
         <button
           type="button"
