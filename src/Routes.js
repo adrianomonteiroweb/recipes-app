@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import Beverages from './pages/Beverages';
 import Login from './pages/Login';
 import Details from './pages/Details';
+import Explore from './pages/Explore';
 
 function Routes() {
   return (
@@ -18,6 +19,7 @@ function Routes() {
         path="/comidas/:id"
         render={ (props) => <Details { ...props } /> }
       />
+      <Route exact path="/explorar" component={ Explore } />
     </Switch>
   );
 }
