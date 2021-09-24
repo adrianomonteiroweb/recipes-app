@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
 import MealCard from '../components/MealCard';
+import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 
 const TWELVE = 12;
@@ -31,6 +32,7 @@ function Recipes() {
         <section>
           {newMeals.map((meal, i) => <MealCard meal={ meal } key={ i } index={ i } />)}
         </section>
+        <Footer />
       </div>
     );
   }

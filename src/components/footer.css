@@ -1,0 +1,10 @@
+footer {
+  display: flex;
+  height: 58px;
+  justify-content: space-between;
+  position: fixed;
+  top: 582px;
+  width: 100%;
+
+}
+
