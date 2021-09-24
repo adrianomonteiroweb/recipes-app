@@ -11,6 +11,7 @@ function MyProvider({ children }) {
     senha: '',
     statusLogin: true,
   });
+  const [filter, setFilter] = useState('');
 
   const contextValue = {
     searchBar: {
@@ -21,6 +22,7 @@ function MyProvider({ children }) {
     },
     login,
     setLogin,
+    filter: { filter, setFilter },
   };
 
   return (

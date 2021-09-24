@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 const returnEndpoint = (endpoint, query) => {
   if (endpoint === 'ingredient') return `filter.php?i=${query}`;
   if (endpoint === 'firstLetter') return `search.php?f=${query}`;
+  if (endpoint === 'categories') return `list.php?c=${query}`;
+  if (endpoint === 'byCategory') return `filter.php?c=${query}`;
   return `search.php?s=${query}`;
 };
 

@@ -6,6 +6,7 @@ import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
 import MealCard from '../components/MealCard';
 import Footer from '../components/Footer';
+import Categories from '../components/Categories';
 
 const TWELVE = 12;
 
@@ -13,17 +14,21 @@ function Recipes() {
   const { searchBar: { query, endpoint } } = useContext(MyContext);
 
   const { meals } = useFetch(query, endpoint, true);
+  console.log(meals);
 
-  if (meals && meals.length < 2) {
+  const categoriesData = useFetch('list', 'categories', true);
+
+  if (meals && meals.length < 2 && endpoint !== 'byCategory') {
     return <Redirect to={ `/comidas/${meals[0].idMeal}` } />;
   }
 
-  if (meals) {
+  if (meals && categoriesData.meals) {
     const newMeals = meals.slice(0, TWELVE);
-    console.log(newMeals);
+
     return (
       <div className="meals container">
         <Header title="Comidas" />
+        <Categories list={ categoriesData.meals } />
         <section>
           {newMeals.map((meal, i) => <MealCard meal={ meal } key={ i } index={ i } />)}
         </section>

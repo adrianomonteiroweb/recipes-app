@@ -6,6 +6,7 @@ import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
 import BeverageCard from '../components/BeverageCard';
 import Footer from '../components/Footer';
+import Categories from '../components/Categories';
 
 const TWELVE = 12;
 
@@ -14,16 +15,19 @@ function Beverages() {
 
   const { drinks } = useFetch(query, endpoint);
 
+  const categoriesData = useFetch('list', 'categories');
+
   if (drinks && drinks.length < 2) {
     return <Redirect to={ `/bebidas/${drinks[0].idDrink}` } />;
   }
 
-  if (drinks) {
+  if (drinks && categoriesData.drinks) {
     const newDrinks = drinks.slice(0, TWELVE);
 
     return (
       <div className=" container">
         <Header title="Bebidas" />
+        <Categories list={ categoriesData.drinks } />
         <section>
           {newDrinks
             .map((drink, i) => <BeverageCard key={ i } beverage={ drink } index={ i } />)}
