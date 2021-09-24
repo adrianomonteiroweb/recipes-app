@@ -16,7 +16,7 @@ function Routes() {
       <Route exact path="/" component={ Login } />
       <Route
         exact
-        path="/comidas/:id"
+        path="/:type/:id"
         render={ (props) => <Details { ...props } /> }
       />
       <Route exact path="/explorar" component={ Explore } />

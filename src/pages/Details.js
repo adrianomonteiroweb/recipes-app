@@ -1,8 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import useFetch from '../hooks/useFetch';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Carousel from '../components/Carousel';
 
-function Details({ history: { location: { pathname } } }) {
-  console.log(pathname);
+const SIX = 6;
+
+function Details({ match: { params: { id, type } } }) {
+  const [key, keysId, meals] = (type === 'comidas')
+    ? ['drinks', 'Drink'] : ['meals', 'Meal', true];
+
+  // localStorage.setItem('doneRecipes', JSON.stringify([{ id }]));
+
+  const data = useFetch('', '', meals);
+
+  if (data[key] && data[key].length > 2) {
+    const recomendations = data[key].slice(0, SIX);
+
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+
+    const recipeDone = doneRecipes && doneRecipes.some((recipe) => id === recipe.id);
+    // ? 'visible' : false;
+    return (
+      <div>
+
+        <Carousel recomendations={ recomendations } keys={ keysId } />
+        <button type="button" className="fixed-bottom " hidden={ recipeDone } data-testid="start-recipe-btn">
+          Iniciar receita
+        </button>
+
+      </div>
+    );
+  }
 
   return (
     <section>

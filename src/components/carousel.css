@@ -1,0 +1,17 @@
+.overflow-x {
+  overflow-y: hidden;
+  max-width: 80%;
+  max-height: 300px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-self: center;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item > img {
+  width: 150px;
+}
