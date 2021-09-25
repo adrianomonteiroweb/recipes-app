@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from '../components/Carousel';
+import { Link } from 'react-router-dom';
 
 const SIX = 6;
 
@@ -29,9 +30,16 @@ function Details({ match: { params: { id, type } } }) {
       <div>
 
         <Carousel recomendations={ recomendations } keys={ keysId } />
-        <button type="button" className="fixed-bottom " hidden={ recipeDone } data-testid="start-recipe-btn">
-          {inProgress ? 'Continuar Receita' : 'Iniciar receita'}
-        </button>
+        <Link to={ `/${type}/${id}/in-progress` }>
+          <button
+            type="button"
+            className="fixed-bottom "
+            hidden={ recipeDone }
+            data-testid="start-recipe-btn"
+          >
+            {inProgress ? 'Continuar Receita' : 'Iniciar receita'}
+          </button>
+        </Link>
 
       </div>
     );
