@@ -7,8 +7,8 @@ import Carousel from '../components/Carousel';
 const SIX = 6;
 
 function Details({ match: { params: { id, type } } }) {
-  const [key, keysId, meals] = (type === 'comidas')
-    ? ['drinks', 'Drink'] : ['meals', 'Meal', true];
+  const [key, keysId, inProgressKey, meals] = (type === 'comidas')
+    ? ['drinks', 'Drink', 'meals'] : ['meals', 'Meal', 'cocktails', true];
 
   // localStorage.setItem('doneRecipes', JSON.stringify([{ id }]));
 
@@ -18,15 +18,19 @@ function Details({ match: { params: { id, type } } }) {
     const recomendations = data[key].slice(0, SIX);
 
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
     const recipeDone = doneRecipes && doneRecipes.some((recipe) => id === recipe.id);
+    const inProgress = inProgressRecipes && inProgressRecipes[inProgressKey][id];
+    // .some((recipe) => id === recipe.id);
     // ? 'visible' : false;
+
     return (
       <div>
 
         <Carousel recomendations={ recomendations } keys={ keysId } />
         <button type="button" className="fixed-bottom " hidden={ recipeDone } data-testid="start-recipe-btn">
-          Iniciar receita
+          {inProgress ? 'Continuar Receita' : 'Iniciar receita'}
         </button>
 
       </div>
