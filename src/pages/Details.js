@@ -4,6 +4,8 @@ import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from '../components/Carousel';
 import StartButton from '../components/StartButton';
+import Share from '../components/Share';
+import Favorite from '../components/Favorite';
 
 const SIX = 6;
 
@@ -18,7 +20,8 @@ function Details({ match: { params: { id, type } } }) {
 
     return (
       <div>
-
+        <Share id={ id } type={ type } />
+        <Favorite id={ id } type={ type } />
         <Carousel recomendations={ recomendations } keys={ keysId } />
         <StartButton type={ type } id={ id } />
 
