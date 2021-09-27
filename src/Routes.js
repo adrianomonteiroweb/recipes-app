@@ -6,6 +6,7 @@ import Beverages from './pages/Beverages';
 import Login from './pages/Login';
 import Details from './pages/Details';
 import Explore from './pages/Explore';
+import RecipeInProgress from './pages/RecipeInProgress';
 
 function Routes() {
   return (
@@ -16,8 +17,13 @@ function Routes() {
       <Route exact path="/" component={ Login } />
       <Route
         exact
-        path="/comidas/:id"
+        path="/:type/:id"
         render={ (props) => <Details { ...props } /> }
+      />
+      <Route
+        exact
+        path="/:type/:id/in-progress"
+        render={ (props) => <RecipeInProgress { ...props } /> }
       />
       <Route exact path="/explorar" component={ Explore } />
     </Switch>
