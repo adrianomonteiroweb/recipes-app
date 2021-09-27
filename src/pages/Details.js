@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Share from '../components/Share';
+import Favorite from '../components/Favorite';
 
 function Details({ history: { location: { pathname } } }) {
-  console.log(pathname);
-
   return (
     <section>
       <h1>Detalhes</h1>
+      <Share rota={ pathname } />
+      <Favorite rota={ pathname } />
     </section>
   );
 }

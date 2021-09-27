@@ -6,6 +6,7 @@ import Beverages from './pages/Beverages';
 import Login from './pages/Login';
 import Details from './pages/Details';
 import Explore from './pages/Explore';
+import DetailsBeverages from './pages/DetailsBeverages';
 
 function Routes() {
   return (
@@ -20,6 +21,7 @@ function Routes() {
         render={ (props) => <Details { ...props } /> }
       />
       <Route exact path="/explorar" component={ Explore } />
+      <Route exact path="/bebidas/:id" component={ DetailsBeverages } />
     </Switch>
   );
 }
