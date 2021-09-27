@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Details from './pages/Details';
 import Explore from './pages/Explore';
 import RecipeInProgress from './pages/RecipeInProgress';
+import ExploreByType from './pages/ExploreByType';
 
 function Routes() {
   return (
@@ -26,6 +27,7 @@ function Routes() {
         render={ (props) => <RecipeInProgress { ...props } /> }
       />
       <Route exact path="/explorar" component={ Explore } />
+      <Route exact path="/explorar/:type" component={ ExploreByType } />
     </Switch>
   );
 }
