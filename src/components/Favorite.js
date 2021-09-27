@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import heartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
-function Favorite({ rota }) {
+function Favorite({ id }) {
   const [fav, setFav] = useState('');
   const [Icon, setIcon] = useState('');
   useEffect(() => {
-    const id = rota.split('/');
     const favorite = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     console.log(favorite);
-    const img = favorite.some((favo) => favo.id === id[2]);
+    const img = favorite.some((favo) => favo.id === id);
     setFav({ img });
-  }, [rota]);
+  }, [id]);
   useEffect(() => {
     if (fav.img) {
       setIcon({ NewIcon: blackHeartIcon });
@@ -22,10 +21,9 @@ function Favorite({ rota }) {
   }, [fav]);
 
   const controlFav = () => {
-    const id = rota.split('/');
     const favorite = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     if (fav.img) {
-      const removeFavorite = favorite.filter((item) => item.id !== id[2]);
+      const removeFavorite = favorite.filter((item) => item.id !== id);
       localStorage.setItem('favoriteRecipes', JSON.stringify(removeFavorite));
       setFav({ img: false });
     } else {
@@ -37,12 +35,17 @@ function Favorite({ rota }) {
   };
   return (
     <button type="button" onClick={ controlFav }>
-      <img src={ Icon.NewIcon } alt="favorite" data-testid="favorite-btn" style={ { width: 40 } } />
+      <img
+        src={ Icon.NewIcon }
+        alt="favorite"
+        data-testid="favorite-btn"
+        style={ { width: 40 } }
+      />
     </button>
   );
 }
 Favorite.propTypes = {
-  rota: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Favorite;

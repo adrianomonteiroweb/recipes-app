@@ -4,10 +4,10 @@ import shareIcon from '../images/shareIcon.svg';
 
 const copy = require('clipboard-copy');
 
-function Share({ rota }) {
+function Share({ id, type }) {
   const [texto, setTexto] = useState(false);
   const shareItem = () => {
-    copy(`http://localhost:3000${rota}`);
+    copy(`http://localhost:3000/${type}/${id}`);
     setTexto(true);
     const TIMER = 500;
     setTimeout(() => {
@@ -24,6 +24,7 @@ function Share({ rota }) {
   );
 }
 Share.propTypes = {
-  rota: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 export default Share;
