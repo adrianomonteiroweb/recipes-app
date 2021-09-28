@@ -5,6 +5,7 @@ const returnEndpoint = (endpoint, query) => {
   if (endpoint === 'firstLetter') return `search.php?f=${query}`;
   if (endpoint === 'categories') return `list.php?c=${query}`;
   if (endpoint === 'byCategory') return `filter.php?c=${query}`;
+  if (endpoint === 'id') return `lookup.php?i=${query}`;
   return `search.php?s=${query}`;
 };
 
