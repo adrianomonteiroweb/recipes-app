@@ -60,14 +60,14 @@ function Details({ match: { params: { id, type } } }) {
             <h4>Instructions</h4>
             <p>{ getType.strInstructions }</p>
           </article>
-          <iframe
+          {mainKey === 'meals' && <iframe
             data-testid="video"
             src={ getType.strYoutube }
             frameBorder="0"
             allow="autoplay; encrypted-media;"
             allowFullScreen
             title="Embedded youtube"
-          />
+          />}
           <Carousel recommendations={ recommendations } keys={ recKeysId } />
           <StartButton type={ type } id={ id } />
         </article>
