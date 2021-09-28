@@ -8,6 +8,7 @@ import Details from './pages/Details';
 import Explore from './pages/Explore';
 import RecipeInProgress from './pages/RecipeInProgress';
 import ExploreByType from './pages/ExploreByType';
+import RecipesMade from './pages/RecipesMade';
 
 function Routes() {
   return (
@@ -28,6 +29,7 @@ function Routes() {
       />
       <Route exact path="/explorar" component={ Explore } />
       <Route exact path="/explorar/:type" component={ ExploreByType } />
+      <Route exact path="/receitas-feitas" component={ RecipesMade } />
     </Switch>
   );
 }
