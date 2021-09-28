@@ -20,7 +20,7 @@
   width: 360px;
 }
 
-[data-testid="recipe-title"] {
+[ data-testid = 'recipe-title' ] {
   margin: 5px;
 }
 
@@ -28,7 +28,7 @@
   margin: 5px;
 }
 
-[data-testid="recipe-category"] {
+[ data-testid = 'recipe-category' ] {
   margin-left: 5px;
 }
 
@@ -42,8 +42,8 @@ article {
 
 iframe {
   height: 160px;
+  margin: 0 auto;
   width: 268px;
-  margin: 0 auto 0 auto;
 }
 
 .div-details-recomended {
@@ -64,7 +64,7 @@ iframe {
   width: 160px;
 }
 
-[data-testid="start-recipe-btn"] {
+[ data-testid = 'start-recipe-btn' ] {
   background-color: #6ce34f;
   height: 76px;
   width: 350px;

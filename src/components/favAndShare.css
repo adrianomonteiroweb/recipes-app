@@ -1,0 +1,9 @@
+.buttonClick {
+  background-color: transparent;
+  border: none;
+  width: 30px;
+}
+
+.buttonImg {
+  max-width: 100%;
+}

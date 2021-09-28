@@ -22,8 +22,7 @@ function Details({ match: { params: { id, type } } }) {
     const recommendations = recommendationsData[recKey].slice(0, SIX);
     const getType = recipeData[mainKey][0];
     const getCategory = getType.strAlcoholic ? 'strAlcoholic' : 'strCategory';
-    console.log(getType);
-
+    console.log(strMainKey);
     return (
       <>
         <img
@@ -38,7 +37,12 @@ function Details({ match: { params: { id, type } } }) {
           </div>
           <div>
             <Share id={ id } type={ type } />
-            <Favorite id={ id } type={ type } />
+            <Favorite
+              id={ id }
+              types={ type }
+              getType={ getType }
+              strMainKey={ strMainKey }
+            />
           </div>
         </div>
         <span data-testid="recipe-category">{ getType[getCategory] }</span>
