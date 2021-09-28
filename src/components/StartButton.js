@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const StartButton = ({ id, type }) => {
+const StartButton = ({ id, type, getType }) => {
   const inProgressKey = (type === 'comidas') ? 'meals' : 'cocktails';
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -10,7 +10,12 @@ const StartButton = ({ id, type }) => {
   const recipeDone = doneRecipes && doneRecipes.some((recipe) => id === recipe.id);
   const inProgress = inProgressRecipes && inProgressRecipes[inProgressKey][id];
   return (
-    <Link to={ `/${type}/${id}/in-progress` }>
+    <Link
+      to={ {
+        pathname: `/${type}/${id}/in-progress`,
+        state: { getType },
+      } }
+    >
       <button
         type="button"
         className="fixed-bottom"
