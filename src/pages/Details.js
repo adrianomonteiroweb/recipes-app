@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,12 +11,25 @@ import RecipeHeader from '../components/RecipeHeader';
 const SIX = 6;
 
 function Details({ match: { params: { id, type } } }) {
-  const [mainKey, strMainKey, recKey, recKeysId, meals] = (type === 'comidas')
-    ? ['meals', 'Meal', 'drinks', 'Drink', false]
-    : ['drinks', 'Drink', 'meals', 'Meal', true];
+  const [mainKey, strMainKey, recKey, recKeysId, storageKey, meals] = (type === 'comidas')
+    ? ['meals', 'Meal', 'drinks', 'Drink', 'meals', false]
+    : ['drinks', 'Drink', 'meals', 'Meal', 'cocktails', true];
 
   const recommendationsData = useFetch('', '', meals);
   const recipeData = useFetch(id, 'id', !meals);
+
+  useEffect(() => {
+    if (localStorage.inProgressRecipes) {
+      const local = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      const newLocal = { ...local,
+        [storageKey]: { ...local[storageKey] } };
+      localStorage.setItem('inProgressRecipes', JSON.stringify(newLocal));
+    } else {
+      console.log('else');
+      localStorage.setItem('inProgressRecipes', JSON.stringify({
+        [storageKey]: {} }));
+    }
+  }, []);
 
   if (recommendationsData[recKey] && recipeData[mainKey]) {
     const recommendations = recommendationsData[recKey].slice(0, SIX);
