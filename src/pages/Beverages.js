@@ -26,7 +26,7 @@ function Beverages() {
 
     return (
       <div className=" container">
-        <Header title="Bebidas" />
+        <Header title="Bebidas" displaySearchBar />
         <Categories list={ categoriesData.drinks } />
         <section>
           {newDrinks

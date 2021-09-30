@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
+import Header from '../components/Header';
 
 function ExploreByType({ match: { params: { type } } }) {
-  const [meals, mainKey, keys] = type === 'comidas'
-    ? [true, 'meals', 'Meal'] : [false, 'drinks', 'Drink'];
+  const [meals, mainKey, keys, headerTitle] = type === 'comidas'
+    ? [true, 'meals', 'Meal', 'Comidas'] : [false, 'drinks', 'Drink', 'Bebidas'];
 
   const data = useFetch('', 'random', meals);
 
@@ -13,7 +14,7 @@ function ExploreByType({ match: { params: { type } } }) {
     console.log(data);
     return (
       <>
-        <h1>Explore</h1>
+        <Header title={ `Explorar ${headerTitle}` } />
         <Link to={ `/explorar/${type}/ingredientes` } data-testid="explore-by-ingredient">
           Por Ingredientes
         </Link>

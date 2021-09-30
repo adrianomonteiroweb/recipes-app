@@ -15,14 +15,17 @@ function RecipesMade() {
       setTexto(false);
     }, TIMER);
   };
-  const [typeRecipes, setTypeRecipes] = useState('');
+  const [typeRecipes, setTypeRecipes] = useState([]);
   useEffect(() => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes'));
+    const value = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     setTypeRecipes(value);
   }, []);
   if (typeRecipes.length === 0) {
     return (
-      <h1>teste</h1>
+      <>
+        <Header title="Receitas Feitas" />
+        <h1>teste</h1>
+      </>
     );
   }
   const selecType = (element) => {
@@ -32,7 +35,7 @@ function RecipesMade() {
 
   return (
     <>
-      <Header title="Receitas" />
+      <Header title="Receitas Feitas" />
       <h1>DoneRecipes</h1>
       <div>
         <button
