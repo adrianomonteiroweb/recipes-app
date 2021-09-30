@@ -84,14 +84,14 @@ function RecipesMade() {
               data-testid={ `${index}-horizontal-share-btn` }
             />
           </button>
-          {receita.tags.map((element) => (
+          {receita.tags.length > 0 ? receita.tags.map((element) => (
             <p
               key={ element }
               data-testid={ `${index}-${element}-horizontal-tag` }
             >
               {element}
             </p>
-          ))}
+          )) : ''}
           {texto && <p>Link copiado!</p>}
         </div>
       ))}
