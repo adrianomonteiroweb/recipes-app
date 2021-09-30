@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
 import Header from '../components/Header';
@@ -35,4 +36,13 @@ function ExploreByType({ match: { params: { type } } }) {
 
   return (<h1>Loading...</h1>);
 }
+
+ExploreByType.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      type: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
 export default ExploreByType;
