@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const returnEndpoint = (endpoint, query) => {
-  if (endpoint === 'ing') return `filter.php?i=${query}`;
+  if (endpoint === 'name') return `search.php?s=${query}`;
+  if (endpoint === 'ingredient') return `filter.php?i=${query}`;
   if (endpoint === 'firstLetter') return `search.php?f=${query}`;
   if (endpoint === 'categories') return `list.php?c=${query}`;
   if (endpoint === 'area') return `filter.php?a=${query}`;

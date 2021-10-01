@@ -24,9 +24,7 @@ function ExploreByArea() {
 
   if (areasData && meals) {
     const TWELVE = 12;
-    // const areas = areasData.meals.slice(0, TWELVE);
     const newMeals = meals.slice(0, TWELVE);
-    // console.log(areas);
     return (
       <>
         <Header title="Explorar Origem" displaySearchBar />
@@ -56,7 +54,11 @@ function ExploreByArea() {
   }
 
   return (
-    <h1>Loading...</h1>
+    <>
+      <Header title="Explorar Origem" displaySearchBar />
+      <h1>Loading...</h1>
+      <Footer />
+    </>
   );
 }
 export default ExploreByArea;

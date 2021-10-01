@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
@@ -14,7 +15,7 @@ function ExploreByIngredients({ match: { params: { type } } }) {
   const data = useFetch('', 'ingredients', meals);
 
   const handleClick = (name) => {
-    setEndpoint('ing');
+    setEndpoint('ingredient');
     setQuery(name);
   };
 
@@ -31,8 +32,8 @@ function ExploreByIngredients({ match: { params: { type } } }) {
             console.log(ingredientName);
             return (
               <Link
-                onClick={ () => handleClick(ingredientName) }
                 to={ `/${type}` }
+                onClick={ () => handleClick(ingredientName) }
                 key={ i }
                 className="card"
                 data-testid={ `${i}-ingredient-card` }
@@ -58,4 +59,9 @@ function ExploreByIngredients({ match: { params: { type } } }) {
     <h1>Loading...</h1>
   );
 }
+
+ExploreByIngredients.propTypes = {
+  match: PropTypes.objectOf(PropTypes.object).isRequired,
+};
+
 export default ExploreByIngredients;

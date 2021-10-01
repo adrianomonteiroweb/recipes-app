@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Header from '../components/Header';
 
 const copy = require('clipboard-copy');
 
-function RecipesMade() {
+const RecipesFav = () => {
+  console.log('rota');
   const [texto, setTexto] = useState(false);
+  const [fav, setFav] = useState(false);
   const shareItem = (type, id) => {
     const URL = window.location.origin;
     copy(`${URL}/${type}s/${id}`);
@@ -16,20 +19,21 @@ function RecipesMade() {
       setTexto(false);
     }, TIMER);
   };
-  const [typeRecipes, setTypeRecipes] = useState(false);
+  const localFavi = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
   useEffect(() => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-    setTypeRecipes(value);
+    setFav(localFavi);
   }, []);
   const selecType = (element) => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes'));
-    setTypeRecipes(value.filter((recipes) => recipes.type.includes(element)));
+    setFav(localFavi.filter((recipes) => recipes.type.includes(element)));
   };
-
+  const removeFav = (id) => {
+    const remove = localFavi.filter((i) => i.id !== id);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(remove));
+    setFav(remove);
+  };
   return (
-    <>
-      <Header title="Receitas Feitas" />
-      <h1>DoneRecipes</h1>
+    <div>
+      <Header title="Receitas Favoritas" />
       <div>
         <button
           type="button"
@@ -54,45 +58,48 @@ function RecipesMade() {
           Drinks
         </button>
       </div>
-      {typeRecipes && typeRecipes.map((recipes, index) => (
-        <div key={ recipes.id }>
-          <Link to={ `${recipes.type}s/${recipes.id}` }>
+      {fav && fav.map((
+        { id, name, type, image, category, area, alcoholicOrNot },
+        index,
+      ) => (
+        <div key={ index }>
+          <Link to={ `${type}s/${id}` }>
             <img
-              src={ recipes.image }
+              src={ image }
               data-testid={ `${index}-horizontal-image` }
-              alt={ recipes.name }
-              style={ { maxWidth: '100%' } }
+              alt={ name }
+              style={ { maxWidth: '20%' } }
             />
           </Link>
-          <p data-testid={ `${index}-horizontal-top-text` }>
-            {`${recipes.area} - ${recipes.category} ${recipes.alcoholicOrNot}`}
-          </p>
-          <Link to={ `${recipes.type}s/${recipes.id}` }>
-            <h3 data-testid={ `${index}-horizontal-name` }>
-              {recipes.name}
-            </h3>
+          <Link to={ `${type}s/${id}` }>
+            <h1 data-testid={ `${index}-horizontal-name` }>{name}</h1>
           </Link>
-          <p data-testid={ `${index}-horizontal-done-date` }>{recipes.doneDate}</p>
-          {recipes.tags && recipes.tags.map((tag) => (
-            <p
-              key={ tag }
-              data-testid={ `${index}-${tag}-horizontal-tag` }
-            >
-              {tag}
-            </p>
-          ))}
-          <button type="button" onClick={ () => shareItem(recipes.type, recipes.id) }>
+          <p data-testid={ `${index}-horizontal-top-text` }>
+            {`${area} - ${category} ${alcoholicOrNot}`}
+          </p>
+          <button type="button" onClick={ () => shareItem(type, id) }>
             <img
               src={ shareIcon }
               alt="shareIcon"
               data-testid={ `${index}-horizontal-share-btn` }
             />
           </button>
+          <button
+            type="button"
+            onClick={ () => removeFav(id) }
+          >
+            <img
+              src={ blackHeartIcon }
+              alt="blackHeartIcon"
+              data-testid={ `${index}-horizontal-favorite-btn` }
+            />
+          </button>
           {texto && <p>Link copiado!</p>}
+
         </div>
       ))}
-      {(typeRecipes.length === 0) && <h1>Vazio</h1> }
-    </>
+    </div>
+
   );
-}
-export default RecipesMade;
+};
+export default RecipesFav;
