@@ -3,9 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MyContext from '../context/MyContext';
 
 function SearchBar() {
-  const [searchQuery, setSearchQuery] = useState('');
-
   const { searchBar: { setEndpoint, setQuery } } = useContext(MyContext);
+  const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('');
 
   const logSearch = () => {

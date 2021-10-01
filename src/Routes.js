@@ -11,6 +11,7 @@ import ExploreByType from './pages/ExploreByType';
 import RecipesMade from './pages/RecipesMade';
 import ExploreByIngredients from './pages/ExploreByIngredients';
 import ExploreByArea from './pages/ExploreByArea';
+import NotFound from './pages/NotFound';
 
 function Routes() {
   return (
@@ -38,6 +39,7 @@ function Routes() {
       />
       <Route exact path="/explorar" component={ Explore } />
       <Route exact path="/receitas-feitas" component={ RecipesMade } />
+      <Route path="*" exact component={ NotFound } />
     </Switch>
   );
 }
