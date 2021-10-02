@@ -26,7 +26,7 @@ function Recipes() {
 
     return (
       <div className="meals container">
-        <Header title="Comidas" />
+        <Header title="Comidas" displaySearchBar />
         <Categories list={ categoriesData.meals } />
         <section>
           {newMeals.map((meal, i) => <MealCard meal={ meal } key={ i } index={ i } />)}

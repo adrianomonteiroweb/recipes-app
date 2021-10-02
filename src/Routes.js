@@ -9,6 +9,9 @@ import Explore from './pages/Explore';
 import RecipeInProgress from './pages/RecipeInProgress';
 import ExploreByType from './pages/ExploreByType';
 import RecipesMade from './pages/RecipesMade';
+import ExploreByIngredients from './pages/ExploreByIngredients';
+import ExploreByArea from './pages/ExploreByArea';
+import NotFound from './pages/NotFound';
 import RecipesFav from './pages/RecipesFav';
 
 function Routes() {
@@ -18,6 +21,13 @@ function Routes() {
       <Route exact path="/perfil" component={ Profile } />
       <Route exact path="/bebidas" component={ Beverages } />
       <Route exact path="/" component={ Login } />
+      <Route exact path="/explorar/:type" component={ ExploreByType } />
+      <Route
+        exact
+        path="/explorar/:type/ingredientes"
+        component={ ExploreByIngredients }
+      />
+      <Route exact path="/explorar/comidas/area" component={ ExploreByArea } />
       <Route
         exact
         path="/:type/:id"
@@ -29,9 +39,9 @@ function Routes() {
         render={ (props) => <RecipeInProgress { ...props } /> }
       />
       <Route exact path="/explorar" component={ Explore } />
-      <Route exact path="/explorar/:type" component={ ExploreByType } />
       <Route exact path="/receitas-feitas" component={ RecipesMade } />
       <Route exact path="/receitas-favoritas" component={ RecipesFav } />
+      <Route path="*" exact component={ NotFound } />
     </Switch>
   );
 }

@@ -18,10 +18,9 @@ function RecipesMade() {
   };
   const [typeRecipes, setTypeRecipes] = useState(false);
   useEffect(() => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes'));
+    const value = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     setTypeRecipes(value);
   }, []);
-
   const selecType = (element) => {
     const value = JSON.parse(localStorage.getItem('doneRecipes'));
     setTypeRecipes(value.filter((recipes) => recipes.type.includes(element)));
@@ -29,7 +28,7 @@ function RecipesMade() {
 
   return (
     <>
-      <Header title="Receitas" />
+      <Header title="Receitas Feitas" />
       <h1>DoneRecipes</h1>
       <div>
         <button
@@ -74,6 +73,14 @@ function RecipesMade() {
             </h3>
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>{recipes.doneDate}</p>
+          {recipes.tags && recipes.tags.map((tag) => (
+            <p
+              key={ tag }
+              data-testid={ `${index}-${tag}-horizontal-tag` }
+            >
+              {tag}
+            </p>
+          ))}
           <button type="button" onClick={ () => shareItem(recipes.type, recipes.id) }>
             <img
               src={ shareIcon }
@@ -81,14 +88,6 @@ function RecipesMade() {
               data-testid={ `${index}-horizontal-share-btn` }
             />
           </button>
-          {recipes.tags.map((element) => (
-            <p
-              key={ element }
-              data-testid={ `${index}-${element}-horizontal-tag` }
-            >
-              {element}
-            </p>
-          ))}
           {texto && <p>Link copiado!</p>}
         </div>
       ))}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Header from '../components/Header';
 
 const copy = require('clipboard-copy');
 
@@ -32,7 +33,7 @@ const RecipesFav = () => {
   };
   return (
     <div>
-      <h1>Recipes</h1>
+      <Header title="Receitas Favoritas" />
       <div>
         <button
           type="button"
