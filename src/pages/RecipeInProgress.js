@@ -16,7 +16,7 @@ const setRecipeDone = (recipe, keys, type) => {
     name: recipe[`str${keys}`],
     image: recipe[`str${keys}Thumb`],
     doneDate: new Date(),
-    tags: recipe.strTags || [],
+    tags: [recipe.strTags] || [],
   };
   if (localStorage.doneRecipes) {
     const strDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
