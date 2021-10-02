@@ -16,8 +16,9 @@ const setRecipeDone = (recipe, keys, type) => {
     name: recipe[`str${keys}`],
     image: recipe[`str${keys}Thumb`],
     doneDate: new Date(),
-    tags: [recipe.strTags] || [],
+    tags: recipe.strTags ? recipe.strTags.split(',') : [],
   };
+  console.log(recipe.strTags);
   if (localStorage.doneRecipes) {
     const strDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
     return localStorage.setItem('doneRecipes',
@@ -98,7 +99,7 @@ const RecipeInProgress = ({ match: { params: { id, type } } }) => {
                 data-testid={ `${i}-ingredient-step` }
               >
                 <input
-                  onClick={ ({ target }) => handleClick(target, i) }
+                  onChange={ ({ target }) => handleClick(target, i) }
                   id={ i }
                   checked={ steps && steps.some((step) => step === i) }
                   type="checkbox"

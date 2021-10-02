@@ -21,7 +21,7 @@ const RecipesFav = () => {
   };
   return (
     <div>
-      <Header titulo="Receitas Favoritas" />
+      <Header title="Receitas Favoritas" />
       <div>
         <button
           type="button"

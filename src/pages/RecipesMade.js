@@ -9,7 +9,6 @@ function RecipesMade() {
     const recipesDone = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     setTypeRecipes(recipesDone);
   }, []);
-
   const selecType = (element) => {
     const recipesDone = JSON.parse(localStorage.getItem('doneRecipes'));
     setTypeRecipes(recipesDone.filter((recipes) => recipes.type.includes(element)));
@@ -17,7 +16,7 @@ function RecipesMade() {
 
   return (
     <>
-      <Header title="Receitas" />
+      <Header title="Receitas Feitas" />
       <h1>DoneRecipes</h1>
       <div>
         <button
@@ -62,15 +61,15 @@ function RecipesMade() {
             </h3>
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>{recipes.doneDate}</p>
-          <Share type={ `${recipes.type}s` } id={ recipes.id } index={ index } />
-          {recipes.tags.map((element) => (
+          {recipes.tags && recipes.tags.map((tag) => (
             <p
-              key={ element }
-              data-testid={ `${index}-${element}-horizontal-tag` }
+              key={ tag }
+              data-testid={ `${index}-${tag}-horizontal-tag` }
             >
-              {element}
+              {tag}
             </p>
           ))}
+          <Share type={ `${recipes.type}s` } id={ recipes.id } index={ index } />
         </div>
       ))}
       {(typeRecipes.length === 0) && <h1>Vazio</h1> }
