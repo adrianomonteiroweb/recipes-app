@@ -23,7 +23,6 @@ const RecipeHeader = ({ id, type, getType }) => {
           <Share id={ id } type={ type } />
           <Favorite
             id={ id }
-            types={ type }
             getType={ getType }
             strMainKey={ strMainKey }
           />

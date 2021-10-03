@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import shareIcon from '../images/shareIcon.svg';
-
-const copy = require('clipboard-copy');
+import Share from '../components/Share';
 
 function RecipesMade() {
-  const [texto, setTexto] = useState(false);
-  const shareItem = (type, id) => {
-    const URL = window.location.origin;
-    copy(`${URL}/${type}s/${id}`);
-    setTexto(true);
-    const TIMER = 500;
-    setTimeout(() => {
-      setTexto(false);
-    }, TIMER);
-  };
   const [typeRecipes, setTypeRecipes] = useState(false);
   useEffect(() => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes')) || [];
-    setTypeRecipes(value);
+    const recipesDone = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    setTypeRecipes(recipesDone);
   }, []);
   const selecType = (element) => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes'));
-    setTypeRecipes(value.filter((recipes) => recipes.type.includes(element)));
+    const recipesDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    setTypeRecipes(recipesDone.filter((recipes) => recipes.type.includes(element)));
   };
 
   return (
@@ -81,14 +69,7 @@ function RecipesMade() {
               {tag}
             </p>
           ))}
-          <button type="button" onClick={ () => shareItem(recipes.type, recipes.id) }>
-            <img
-              src={ shareIcon }
-              alt="shareIcon"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
-          </button>
-          {texto && <p>Link copiado!</p>}
+          <Share type={ `${recipes.type}s` } id={ recipes.id } index={ index } />
         </div>
       ))}
       {(typeRecipes.length === 0) && <h1>Vazio</h1> }

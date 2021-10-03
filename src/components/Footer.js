@@ -9,19 +9,13 @@ function Footer() {
   return (
     <footer data-testid="footer">
       <Link to="/bebidas">
-        <button type="button">
-          <img src={ drinkIcon } alt="drink" data-testid="drinks-bottom-btn" />
-        </button>
+        <img src={ drinkIcon } alt="drink" data-testid="drinks-bottom-btn" />
       </Link>
       <Link to="/explorar">
-        <button type="button">
-          <img src={ exploreIcon } alt="explore" data-testid="explore-bottom-btn" />
-        </button>
+        <img src={ exploreIcon } alt="explore" data-testid="explore-bottom-btn" />
       </Link>
       <Link to="/comidas">
-        <button type="button">
-          <img src={ mealIcon } alt="meal" data-testid="food-bottom-btn" />
-        </button>
+        <img src={ mealIcon } alt="meal" data-testid="food-bottom-btn" />
       </Link>
     </footer>
   );

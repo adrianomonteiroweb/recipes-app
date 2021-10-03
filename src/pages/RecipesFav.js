@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Header from '../components/Header';
-
-const copy = require('clipboard-copy');
+import Share from '../components/Share';
 
 const RecipesFav = () => {
-  console.log('rota');
-  const [texto, setTexto] = useState(false);
   const [fav, setFav] = useState(false);
-  const shareItem = (type, id) => {
-    const URL = window.location.origin;
-    copy(`${URL}/${type}s/${id}`);
-    setTexto(true);
-    const TIMER = 500;
-    setTimeout(() => {
-      setTexto(false);
-    }, TIMER);
-  };
+
   const localFavi = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
   useEffect(() => {
     setFav(localFavi);
@@ -77,13 +65,7 @@ const RecipesFav = () => {
           <p data-testid={ `${index}-horizontal-top-text` }>
             {`${area} - ${category} ${alcoholicOrNot}`}
           </p>
-          <button type="button" onClick={ () => shareItem(type, id) }>
-            <img
-              src={ shareIcon }
-              alt="shareIcon"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
-          </button>
+          <Share type={ `${type}s` } id={ id } index={ index } />
           <button
             type="button"
             onClick={ () => removeFav(id) }
@@ -94,12 +76,10 @@ const RecipesFav = () => {
               data-testid={ `${index}-horizontal-favorite-btn` }
             />
           </button>
-          {texto && <p>Link copiado!</p>}
 
         </div>
       ))}
     </div>
-
   );
 };
 export default RecipesFav;
