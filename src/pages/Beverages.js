@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
@@ -10,8 +11,15 @@ import Categories from '../components/Categories';
 
 const TWELVE = 12;
 
-function Beverages() {
-  const { searchBar: { query, endpoint } } = useContext(MyContext);
+function Beverages({ location: { state } }) {
+  const { searchBar: { query, endpoint, setEndpoint, setQuery } } = useContext(MyContext);
+
+  useEffect(() => {
+    if (state && state.ingredient) {
+      setEndpoint('ingredient');
+      setQuery(state.ingredient);
+    }
+  }, [state]);
 
   const { drinks } = useFetch(query, endpoint);
 
@@ -43,5 +51,21 @@ function Beverages() {
 
   return <h1>Loading...</h1>;
 }
+
+Beverages.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      ingredient: PropTypes.string,
+    }),
+  }),
+};
+
+Beverages.defaultProps = {
+  location: {
+    state: {
+      ingredient: '',
+    },
+  },
+};
 
 export default Beverages;

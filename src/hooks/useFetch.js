@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
 
-const returnEndpoint = (endpoint, query) => {
-  if (endpoint === 'name') return `search.php?s=${query}`;
-  if (endpoint === 'ingredient') return `filter.php?i=${query}`;
-  if (endpoint === 'firstLetter') return `search.php?f=${query}`;
-  if (endpoint === 'categories') return `list.php?c=${query}`;
-  if (endpoint === 'area') return `filter.php?a=${query}`;
-  if (endpoint === 'areas') return 'list.php?a=list';
-  if (endpoint === 'ingredients') return 'list.php?i=list';
-  if (endpoint === 'byCategory') return `filter.php?c=${query}`;
-  if (endpoint === 'id') return `lookup.php?i=${query}`;
-  if (endpoint === 'random') return 'random.php';
-  return `search.php?s=${query}`;
-};
+const returnEndpoint = (query) => ({
+  name: () => `search.php?s=${query}`,
+  ingredient: () => `filter.php?i=${query}`,
+  firstLetter: () => `search.php?f=${query}`,
+  categories: () => `list.php?c=${query}`,
+  area: () => `filter.php?a=${query}`,
+  areas: () => 'list.php?a=list',
+  ingredients: () => 'list.php?i=list',
+  byCategory: () => `filter.php?c=${query}`,
+  id: () => `lookup.php?i=${query}`,
+  random: () => 'random.php',
+});
 
-const useFetch = (query, endpoint, recipe) => {
+const useFetch = (query = '', endpoint = '', recipe) => {
   const [data, setData] = useState({});
   const page = recipe ? 'themeal' : 'thecocktail';
 
-  const URL = `https://www.${page}db.com/api/json/v1/1/${returnEndpoint(endpoint, query)}`;
+  const finalURL = endpoint ? returnEndpoint(query)[endpoint]() : `search.php?s=${query}`;
+
+  const URL = `https://www.${page}db.com/api/json/v1/1/${finalURL}`;
   console.log(URL);
   useEffect(() => {
     const fetchAPI = () => {
