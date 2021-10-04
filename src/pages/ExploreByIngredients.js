@@ -1,27 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
-import MyContext from '../context/MyContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ExploreByIngredients({ match: { params: { type } } }) {
   const [mainKey, API, meals] = type === 'comidas'
     ? ['meals', 'meal', true] : ['drinks', 'cocktail', false];
 
-  const { searchBar: { setQuery, setEndpoint } } = useContext(MyContext);
   const data = useFetch('', 'ingredients', meals);
 
-  const handleClick = (name) => {
-    setEndpoint('ingredient');
-    setQuery(name);
-  };
+  useEffect(() => {
+    // setEndpoint('ingredient');
+  }, []);
+
+  // const handleClick = async (name) => {
+  //   const response = await fetch(`https://www.the${API}db.com/api/json/v1/1/filter.php?i=${name}`);
+  //   const newData = await response.json();
+  //   return newData[mainKey];
+  // };
 
   if (data && data[mainKey]) {
     const TWELVE = 12;
-    const ingredients = data[mainKey].splice(0, TWELVE);
+    const ingredients = data[mainKey].slice(0, TWELVE);
     return (
       <>
         <Header title="Explorar Ingredientes" />
@@ -32,8 +35,11 @@ function ExploreByIngredients({ match: { params: { type } } }) {
             console.log(ingredientName);
             return (
               <Link
-                to={ `/${type}` }
-                onClick={ () => handleClick(ingredientName) }
+                to={ {
+                  pathname: `/${type}`,
+                  state: { ingredient: ingredientName },
+                } }
+                // onClick={ () => handleClick(ingredientName) }
                 key={ i }
                 className="card"
                 data-testid={ `${i}-ingredient-card` }
