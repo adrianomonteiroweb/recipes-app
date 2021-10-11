@@ -10,8 +10,8 @@ body {
 .div-details-title {
   display: flex;
   justify-content: space-between;
-  width: 95%;
   margin: 10px auto 40px;
+  width: 95%;
 }
 
 .div-details-title > div > span {
@@ -21,8 +21,8 @@ body {
 .main-content {
   display: flex;
   flex-direction: column;
-  width: 90%;
   margin: 0 auto;
+  width: 90%;
 }
 
 .ingredients > h4 {
@@ -30,21 +30,21 @@ body {
 }
 
 .ingredients > div {
-  padding: 15px 0 0;
-  border: 1px solid transparent;
-  border-radius: 10px;
   background: linear-gradient(
     45deg,
     rgba(246, 227, 42, 1) 0%,
     rgba(251, 244, 172, 1) 100%
   );
-  margin-top: 12px;
-  margin: 20px auto 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
+  margin: 20px auto;
+  margin-top: 12px;
+  padding: 15px 0 0;
 }
 
 .instructions {
-  margin: 20px 0 20px;
+  margin: 20px 0;
 }
 
 .instructions > h4 {
@@ -52,31 +52,30 @@ body {
 }
 
 .instructions > p {
-  padding: 15px;
-  border: 1px solid transparent;
-  border-radius: 10px;
   background: linear-gradient(
     45deg,
     rgba(246, 227, 42, 1) 0%,
     rgba(251, 244, 172, 1) 100%
   );
-
-  margin-top: 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
+  margin-top: 12px;
+  padding: 15px;
 }
 
 iframe {
-  margin: 0 0 20px 0;
   border-radius: 10px;
+  margin: 0 0 20px;
 }
 
 .start-btn {
-  left: 50%;
-  transform: translateX(-50%);
   background-color: #bebebe;
   border: none;
-  padding: 10px;
   border-radius: 5px;
+  left: 50%;
+  padding: 10px;
+  transform: translateX(-50%);
 }
 
 .start-btn:active {

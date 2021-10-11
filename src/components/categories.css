@@ -1,23 +1,23 @@
 .categories {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .categories-button {
-    background-color: #F84737;
-    border: 0;
-    border-radius: 10px;
-    color: rgb(22, 24, 26);
-    display: flex;
-    justify-content: center;
-    margin: 2px;
-    min-width: 90px;
-    padding: 2px;
+  background-color: #f84737;
+  border: 0;
+  border-radius: 10px;
+  color: rgb(22, 24, 26);
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+  min-width: 90px;
+  padding: 2px;
 }
 
 .categories-button:hover {
-    box-shadow: 3px 5px #F8988F;
+  box-shadow: 3px 5px #f8988f;
 }
