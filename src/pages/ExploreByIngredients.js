@@ -49,9 +49,9 @@ function ExploreByIngredients({ match: { params: { type } } }) {
                   alt={ ingredient[ingredientKey] }
                   data-testid={ `${i}-card-img` }
                 />
-                <h2 data-testid={ `${i}-card-name` }>
+                <h3 data-testid={ `${i}-card-name` }>
                   {ingredient[ingredientKey]}
-                </h2>
+                </h3>
               </Link>
             );
           })}
