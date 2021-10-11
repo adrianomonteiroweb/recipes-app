@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
 import MealCard from '../components/MealCard';
+import './explore.css';
 
 function ExploreByArea() {
   const { searchBar: { query, endpoint, setQuery, setEndpoint } } = useContext(MyContext);
@@ -21,35 +22,38 @@ function ExploreByArea() {
     const newEndpoint = newQuery === '' ? '' : 'area';
     setEndpoint(newEndpoint);
   };
+  console.log(areasData);
 
-  if (areasData && meals) {
+  if (areasData.meals && meals) {
     const TWELVE = 12;
     const newMeals = meals.slice(0, TWELVE);
     return (
-      <>
+      <div className="container">
         <Header title="Explorar Origem" displaySearchBar />
-        <select
-          data-testid="explore-by-area-dropdown"
-          onChange={ ({ target }) => handleChange(target.value) }
-        >
-          <option value="" data-testid="All-option">All</option>
-          {areasData.meals.map(({ strArea }, i) => (
-            <option
-              key={ i }
-              data-testid={ `${strArea}-option` }
-              value={ strArea }
-            >
-              {strArea}
-            </option>
-          ))}
-        </select>
-        <section>
+        <div className="selecBox">
+          <select
+            data-testid="explore-by-area-dropdown"
+            onChange={ ({ target }) => handleChange(target.value) }
+          >
+            <option value="" data-testid="All-option">All</option>
+            {areasData.meals.map(({ strArea }, i) => (
+              <option
+                key={ i }
+                data-testid={ `${strArea}-option` }
+                value={ strArea }
+              >
+                {strArea}
+              </option>
+            ))}
+          </select>
+        </div>
+        <section className="cards">
           {newMeals.map((meal, i) => (
             <MealCard key={ i } index={ i } meal={ meal } />
           ))}
         </section>
         <Footer />
-      </>
+      </div>
     );
   }
 

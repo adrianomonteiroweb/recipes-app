@@ -1,0 +1,19 @@
+.profileCard {
+  background-color: #f84737;
+  border-radius: 10px;
+  box-shadow: 3px 5px  5px #f8988f;
+  color: black;
+  margin: 20px 0;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.profileCard h5 {
+  margin-top: 10px;
+}
+
+.emailUser {
+  font-size: 7vw;
+  margin: 10% 0;
+  overflow-wrap: break-word;
+}

@@ -1,0 +1,34 @@
+.shadowBox h5 {
+  margin-top: 10px;
+}
+
+.shadowBox {
+  background-color: #f84737;
+  border-radius: 10px;
+  box-shadow: 3px 5px  5px #f8988f;
+  color: black;
+  margin: 20px 0;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.selecBox {
+  margin: 20px auto;
+  max-width: 80%;
+}
+
+.selecBox select {
+  background-color: #f84737;
+  border-radius: 5px;
+  height: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: auto;
+  margin-bottom: 100px;
+}
