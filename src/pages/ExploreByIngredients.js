@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './explore.css';
 
 function ExploreByIngredients({ match: { params: { type } } }) {
   const [mainKey, API, meals] = type === 'comidas'
@@ -26,13 +27,12 @@ function ExploreByIngredients({ match: { params: { type } } }) {
     const TWELVE = 12;
     const ingredients = data[mainKey].slice(0, TWELVE);
     return (
-      <>
+      <div className="container">
         <Header title="Explorar Ingredientes" />
-        <section className="container">
+        <section className="container cards">
           {ingredients.map((ingredient, i) => {
             const ingredientKey = !meals ? 'strIngredient1' : 'strIngredient';
             const ingredientName = ingredient[ingredientKey];
-            console.log(ingredientName);
             return (
               <Link
                 to={ {
@@ -49,15 +49,15 @@ function ExploreByIngredients({ match: { params: { type } } }) {
                   alt={ ingredient[ingredientKey] }
                   data-testid={ `${i}-card-img` }
                 />
-                <h2 data-testid={ `${i}-card-name` }>
+                <h3 data-testid={ `${i}-card-name` }>
                   {ingredient[ingredientKey]}
-                </h2>
+                </h3>
               </Link>
             );
           })}
         </section>
         <Footer />
-      </>
+      </div>
     );
   }
 

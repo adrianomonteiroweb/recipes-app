@@ -12,13 +12,13 @@ const setRecipeDone = (recipe, keys, type) => {
   const recipeDone = {
     id: recipe[`id${keys}`],
     type: type === 'comidas' ? 'comida' : 'bebida',
-    area: recipe.strArea,
+    area: recipe.strArea || '',
     category: recipe.strCategory || '',
     alcoholicOrNot: recipe.strAlcoholic || '',
     name: recipe[`str${keys}`],
     image: recipe[`str${keys}Thumb`],
     doneDate: new Date(),
-    tags: recipe.strTags ? recipe.strTags.split(',') : [],
+    tags: [recipe.strTags] || [],
   };
   console.log(recipe.strTags);
   if (localStorage.doneRecipes) {
