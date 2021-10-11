@@ -36,7 +36,7 @@ function Beverages({ location: { state } }) {
       <div className=" container">
         <Header title="Bebidas" displaySearchBar />
         <Categories list={ categoriesData.drinks } />
-        <section>
+        <section className="cards-section">
           {newDrinks
             .map((drink, i) => <BeverageCard key={ i } beverage={ drink } index={ i } />)}
         </section>
