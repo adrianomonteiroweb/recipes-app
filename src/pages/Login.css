@@ -1,0 +1,44 @@
+@media (min-width: 320px) {
+  :root {
+    --main-btn-color: #F84737;
+    --main-bg-color: #FFFFFF;
+  }
+  
+  .sectionCss {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-bg-color);
+
+  }
+
+  .h1Css {
+    margin-top: 20%;
+    font-size: 39px;
+    color: #000000;
+  }
+
+  /* .formCss {
+    
+  } */
+
+  #floatingInput {
+    margin-top: 10%;
+  }
+
+  #floatingPassword {
+    margin-top: 10%;
+    margin-bottom: 25%;
+  }
+
+  #btnCss {
+    background-color: var(--main-btn-color);
+    border: none;
+    padding: 10px 20px 10px 20px;
+    width: 300px;
+    color: #000000;
+    font-size: 22px;
+    border-radius: 8px;
+    box-shadow: 3px 5px 5px #F8988F
+  }
+}
