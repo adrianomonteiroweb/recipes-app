@@ -27,7 +27,7 @@ function ExploreByIngredients({ match: { params: { type } } }) {
     const TWELVE = 12;
     const ingredients = data[mainKey].slice(0, TWELVE);
     return (
-      <>
+      <div className="container">
         <Header title="Explorar Ingredientes" />
         <section className="container cards">
           {ingredients.map((ingredient, i) => {
@@ -57,7 +57,7 @@ function ExploreByIngredients({ match: { params: { type } } }) {
           })}
         </section>
         <Footer />
-      </>
+      </div>
     );
   }
 

@@ -6,9 +6,9 @@ import './explore.css';
 
 function Explore() {
   return (
-    <>
+    <div className="container">
       <Header title="Explorar" />
-      <div className="container">
+      <div>
         <Link
           to="/explorar/comidas"
           data-testid="explore-food"
@@ -30,7 +30,7 @@ function Explore() {
         </Link>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 export default Explore;

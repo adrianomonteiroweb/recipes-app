@@ -28,7 +28,7 @@ function ExploreByArea() {
     const TWELVE = 12;
     const newMeals = meals.slice(0, TWELVE);
     return (
-      <>
+      <div className="container">
         <Header title="Explorar Origem" displaySearchBar />
         <div className="selecBox">
           <select
@@ -53,7 +53,7 @@ function ExploreByArea() {
           ))}
         </section>
         <Footer />
-      </>
+      </div>
     );
   }
 

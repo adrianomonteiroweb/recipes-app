@@ -14,9 +14,9 @@ function ExploreByType({ match: { params: { type } } }) {
 
   if (data && data[mainKey]) {
     return (
-      <>
+      <div className="container">
         <Header title={ `Explorar ${headerTitle}` } />
-        <div className="container">
+        <div>
           <Link
             to={ `/explorar/${type}/ingredientes` }
             data-testid="explore-by-ingredient"
@@ -49,7 +49,7 @@ function ExploreByType({ match: { params: { type } } }) {
         </div>
 
         <Footer />
-      </>
+      </div>
     );
   }
 
