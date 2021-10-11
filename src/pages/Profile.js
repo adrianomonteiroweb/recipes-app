@@ -30,7 +30,11 @@ function Profile() {
             <h5 data-testid="profile-favorite-btn">Receitas Favoritas</h5>
           </div>
         </Link>
-        <Link to="/" onClick={ () => localStorage.clear() } style={ { textDecoration: 'none' } }>
+        <Link
+          to="/"
+          onClick={ () => localStorage.clear() }
+          style={ { textDecoration: 'none' } }
+        >
           <div className="profileCard row flex-column">
             <h5 data-testid="profile-logout-btn">Sair</h5>
           </div>

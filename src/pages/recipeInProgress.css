@@ -3,9 +3,9 @@
 }
 
 .ingredients > div {
-  padding: 10px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .ingredients > div > label {
