@@ -18,6 +18,7 @@ const RecipeHeader = ({ id, type, getType }) => {
       <div className="div-details-title">
         <div>
           <h2 data-testid="recipe-title">{ getType[`str${strMainKey}`] }</h2>
+          <span data-testid="recipe-category">{ getType[getCategory] }</span>
         </div>
         <div>
           <Share id={ id } type={ type } />
@@ -28,7 +29,6 @@ const RecipeHeader = ({ id, type, getType }) => {
           />
         </div>
       </div>
-      <span data-testid="recipe-category">{ getType[getCategory] }</span>
     </section>
   );
 };

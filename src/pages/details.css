@@ -4,68 +4,82 @@
   padding: 0;
 } */
 
-.details-section {
-  width: 268px;
+body {
+  background-color: whitesmoke;
 }
 
 .thumb-details {
-  height: 155px;
-  width: 360px;
+  border-bottom: 2px groove whitesmoke;
+  width: 100%;
 }
 
 .div-details-title {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 360px;
+  width: 95%;
+  margin: 10px auto 40px;
 }
 
-[ data-testid = 'recipe-title' ] {
-  margin: 5px;
+.div-details-title > div > span {
+  color: #595959;
 }
 
-.icons {
-  margin: 5px;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
 }
 
-[ data-testid = 'recipe-category' ] {
+.ingredients > h4 {
   margin-left: 5px;
 }
 
-article {
-  margin-left: 5px;
+.ingredients > div {
+  padding: 15px 0 0;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: #f6e32a;
+  margin-top: 12px;
+  margin: 20px auto 20px;
+  box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
 }
 
 .instructions {
-  width: 268px;
+  margin: 20px 0 20px;
+}
+
+.instructions > h4 {
+  margin-left: 5px;
+}
+
+.instructions > p {
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: #f6e32a;
+  margin-top: 12px;
+  box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
 }
 
 iframe {
-  height: 160px;
-  margin: 0 auto;
-  width: 268px;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
 }
 
-.div-details-recomended {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  width: 360px;
+.start-btn {
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff722b;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.div-details-recomended .recomendation-card {
-  display: flex;
-  flex-direction: column;
-  margin: 2px;
-  width: 268px;
+.start-btn:hover {
+  background-color: #f84737;
 }
 
-.recomendation-card .recomendation-thumb {
-  width: 160px;
-}
-
-[ data-testid = 'start-recipe-btn' ] {
-  background-color: #6ce34f;
-  height: 76px;
-  width: 350px;
+.start-btn:active {
+  background-color: #f84737;
 }

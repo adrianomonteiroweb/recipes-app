@@ -15,11 +15,11 @@ const returnEndpoint = (query) => ({
 
 const useFetch = (query = '', endpoint = '', recipe) => {
   const [data, setData] = useState({});
-  const page = recipe ? 'themeal' : 'thecocktail';
+  const page = recipe ? 'meal' : 'cocktail';
 
   const finalURL = endpoint ? returnEndpoint(query)[endpoint]() : `search.php?s=${query}`;
 
-  const URL = `https://www.${page}db.com/api/json/v1/1/${finalURL}`;
+  const URL = `https://www.the${page}db.com/api/json/v1/1/${finalURL}`;
   console.log(URL);
   useEffect(() => {
     const fetchAPI = () => {

@@ -43,20 +43,25 @@ function Details({ match: { params: { id, type } } }) {
           getType={ getType }
           strMainKey={ strMainKey }
         />
-        <article>
-          <h4>Ingredients</h4>
-          <ol>
-            { Object.keys(getType)
-              .filter((key) => key.includes('Ingredient'))
-              .map((meal, i) => (
-                getType[meal] !== '' && getType[meal] !== null ? (
-                  <li
-                    key={ i }
-                    data-testid={ `${i}-ingredient-name-and-measure` }
-                  >
-                    { `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
-                  </li>) : undefined))}
-          </ol>
+        <article className="main-content">
+          <div className="">
+            <h4>Ingredients</h4>
+            <div>
+
+              <ol>
+                { Object.keys(getType)
+                  .filter((key) => key.includes('Ingredient'))
+                  .map((meal, i) => (
+                    getType[meal] !== '' && getType[meal] !== null ? (
+                      <li
+                        key={ i }
+                        data-testid={ `${i}-ingredient-name-and-measure` }
+                      >
+                        { `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
+                      </li>) : undefined))}
+              </ol>
+            </div>
+          </div>
           <RecipeInstructions getType={ getType } />
           {mainKey === 'meals' && <iframe
             data-testid="video"

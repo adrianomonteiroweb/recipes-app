@@ -35,7 +35,7 @@ function Recipes({ location: { state } }) {
     const newMeals = data.slice(0, TWELVE);
 
     return (
-      <div className="meals container">
+      <div className="container">
         <Header title="Comidas" displaySearchBar />
         <Categories list={ categoriesData.meals } />
         <section>

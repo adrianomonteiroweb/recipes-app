@@ -1,17 +1,43 @@
 .overflow-x {
   display: flex;
   flex-wrap: nowrap;
-  justify-self: center;
-  max-height: 300px;
-  max-width: 80%;
+  max-width: 100%;
   overflow-y: hidden;
+  margin: 0 auto 30px;
+  height: 250px;
+  align-items: center;
 }
 
 .item {
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  padding: 0 0 20px;
+  background-color: #ffc82b;
+  height: 200px;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow: 11px 9px 11px -7px rgba(30, 30, 60, 0.48),
+    -5px 9px 11px -7px rgba(30, 30, 60, 0.48);
 }
 
 .item > img {
-  width: 150px;
+  width: 140px;
+  border-radius: 10px 10px 0 0;
+  /* border-bottom: 1px solid black; */
+}
+
+.item > p {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.start-container {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+}
+
+.start-container button {
+  justify-self: center;
 }

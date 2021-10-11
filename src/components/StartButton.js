@@ -23,7 +23,7 @@ const StartButton = ({ id, type, getType }) => {
     >
       <button
         type="button"
-        className="fixed-bottom"
+        className="fixed-bottom start-btn"
         hidden={ recipeDone }
         data-testid="start-recipe-btn"
       >
