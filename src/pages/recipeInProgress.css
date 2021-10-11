@@ -1,12 +1,21 @@
-input:checked + label {
-  color: green;
-  text-decoration-line: line-through;
-}
-
-/* input[type="checkbox"]:checked {
-  box-shadow: 0 0 0 3px hotpink;
-} */
-
 .checked {
   text-decoration: line-through;
+}
+
+.ingredients > div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.ingredients > div > label {
+  padding: 5px 0 2px;
+}
+
+.ingredients > div > label > input {
+  margin-right: 10px;
+}
+
+.finish-btn {
+  background-color: #f84737;
 }

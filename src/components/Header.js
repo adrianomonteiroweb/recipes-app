@@ -12,7 +12,7 @@ function Header({ title, displaySearchBar }) {
 
   return (
     <header className="container">
-      <div id="header" className="row justify-content-around align-items-center">
+      <div className="row justify-content-around align-items-center header">
         <Link to="/perfil">
           <img src={ profileIcon } alt="Profile" data-testid="profile-top-btn" />
         </Link>

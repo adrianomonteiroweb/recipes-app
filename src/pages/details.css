@@ -1,71 +1,83 @@
-/* * {
-  border: 0;
-  margin: 0;
-  padding: 0;
-} */
-
-.details-section {
-  width: 268px;
+body {
+  background-color: whitesmoke;
 }
 
 .thumb-details {
-  height: 155px;
-  width: 360px;
+  border-bottom: 2px groove whitesmoke;
+  width: 100%;
 }
 
 .div-details-title {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 360px;
+  margin: 10px auto 40px;
+  width: 95%;
 }
 
-[ data-testid = 'recipe-title' ] {
-  margin: 5px;
+.div-details-title > div > span {
+  color: #595959;
 }
 
-.icons {
-  margin: 5px;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
 }
 
-[ data-testid = 'recipe-category' ] {
+.ingredients > h4 {
   margin-left: 5px;
 }
 
-article {
-  margin-left: 5px;
+.ingredients > div {
+  background: linear-gradient(
+    45deg,
+    rgba(246, 227, 42, 1) 0%,
+    rgba(251, 244, 172, 1) 100%
+  );
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
+  margin: 20px auto;
+  margin-top: 12px;
+  padding: 15px 0 0;
 }
 
 .instructions {
-  width: 268px;
+  margin: 20px 0;
+}
+
+.instructions > h4 {
+  margin-left: 5px;
+}
+
+.instructions > p {
+  background: linear-gradient(
+    45deg,
+    rgba(246, 227, 42, 1) 0%,
+    rgba(251, 244, 172, 1) 100%
+  );
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.75) inset;
+  margin-top: 12px;
+  padding: 15px;
 }
 
 iframe {
-  height: 160px;
-  margin: 0 auto;
-  width: 268px;
+  border-radius: 10px;
+  margin: 0 0 20px;
 }
 
-.div-details-recomended {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  width: 360px;
+.start-btn {
+  background-color: #bebebe;
+  border: none;
+  border-radius: 5px;
+  left: 50%;
+  padding: 10px;
+  transform: translateX(-50%);
 }
 
-.div-details-recomended .recomendation-card {
-  display: flex;
-  flex-direction: column;
-  margin: 2px;
-  width: 268px;
-}
-
-.recomendation-card .recomendation-thumb {
-  width: 160px;
-}
-
-[ data-testid = 'start-recipe-btn' ] {
-  background-color: #6ce34f;
-  height: 76px;
-  width: 350px;
+.start-btn:active {
+  background-color: darkgray;
 }

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import RecipeHeader from '../components/RecipeHeader';
 import RecipeInstructions from '../components/RecipeInstructions';
 import './recipeInProgress.css';
+import './details.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import useFetch from '../hooks/useFetch';
 
 const setRecipeDone = (recipe, keys, type) => {
@@ -86,42 +88,46 @@ const RecipeInProgress = ({ match: { params: { id, type } } }) => {
     const ingredients = Object.keys(getType)
       .filter((key) => key.includes('Ingredient') && getType[key]);
     return (
-      <div>
+      <>
         <RecipeHeader getType={ getType } id={ id } type={ type } />
-        <section>
-          {ingredients
-            .map((meal, i) => (
-
-              <label
-                htmlFor={ i }
-                className={ steps && steps.some((step) => step === i) && 'checked' }
-                key={ i }
-                data-testid={ `${i}-ingredient-step` }
-              >
-                <input
-                  onChange={ ({ target }) => handleClick(target, i) }
-                  id={ i }
-                  checked={ steps && steps.some((step) => step === i) }
-                  type="checkbox"
-                  value={ `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
-                />
-                { `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
-              </label>
-            ))}
+        <section className="main-content">
+          <section className="ingredients">
+            <h4>Ingredients</h4>
+            <div>
+              {ingredients
+                .map((meal, i) => (
+                  <label
+                    htmlFor={ i }
+                    className={ steps && steps.some((step) => step === i) && 'checked' }
+                    key={ i }
+                    data-testid={ `${i}-ingredient-step` }
+                  >
+                    <input
+                      onChange={ ({ target }) => handleClick(target, i) }
+                      id={ i }
+                      checked={ steps && steps.some((step) => step === i) }
+                      type="checkbox"
+                      value={ `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
+                    />
+                    { `${getType[meal]} - ${getType[`strMeasure${i + 1}`]}` }
+                  </label>
+                ))}
+            </div>
+          </section>
+          <RecipeInstructions getType={ getType } />
+          <Link to="/receitas-feitas">
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+              disabled={ ingredients.length !== steps.length }
+              onClick={ () => setRecipeDone(getType, keys, type) }
+              className="fixed-bottom start-btn finish-btn"
+            >
+              Finalizar receita
+            </button>
+          </Link>
         </section>
-        <RecipeInstructions getType={ getType } />
-        <Link to="/receitas-feitas">
-          <button
-            type="button"
-            data-testid="finish-recipe-btn"
-            disabled={ ingredients.length !== steps.length }
-            onClick={ () => setRecipeDone(getType, keys, type) }
-          >
-            Finalizar receita
-
-          </button>
-        </Link>
-      </div>
+      </>
     );
   }
 
