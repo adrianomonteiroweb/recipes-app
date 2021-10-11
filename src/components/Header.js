@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import './header.css';
 
 function Header({ title, displaySearchBar }) {
   const [searchBar, setSearchBar] = useState(false);
 
   return (
     <header className="container">
-      <div className="row justify-content-around align-items-center">
+      <div id="header" className="row justify-content-around align-items-center">
         <Link to="/perfil">
           <img src={ profileIcon } alt="Profile" data-testid="profile-top-btn" />
         </Link>

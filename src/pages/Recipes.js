@@ -8,6 +8,7 @@ import MyContext from '../context/MyContext';
 import MealCard from '../components/MealCard';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
+import './recipes.css';
 
 const TWELVE = 12;
 
@@ -38,7 +39,7 @@ function Recipes({ location: { state } }) {
       <div className="meals container">
         <Header title="Comidas" displaySearchBar />
         <Categories list={ categoriesData.meals } />
-        <section>
+        <section className="cards-section">
           {newMeals.map((meal, i) => <MealCard meal={ meal } key={ i } index={ i } />)}
         </section>
         <Footer />
