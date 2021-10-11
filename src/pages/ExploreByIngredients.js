@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './explore.css';
 
 function ExploreByIngredients({ match: { params: { type } } }) {
   const [mainKey, API, meals] = type === 'comidas'
@@ -28,11 +29,10 @@ function ExploreByIngredients({ match: { params: { type } } }) {
     return (
       <>
         <Header title="Explorar Ingredientes" />
-        <section className="container">
+        <section className="container cards">
           {ingredients.map((ingredient, i) => {
             const ingredientKey = !meals ? 'strIngredient1' : 'strIngredient';
             const ingredientName = ingredient[ingredientKey];
-            console.log(ingredientName);
             return (
               <Link
                 to={ {

@@ -10,7 +10,7 @@ function RecipesMade() {
     setTypeRecipes(recipesDone);
   }, []);
   const selecType = (element) => {
-    const recipesDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    const recipesDone = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     setTypeRecipes(recipesDone.filter((recipes) => recipes.type.includes(element)));
   };
 
