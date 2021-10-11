@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MyContext from '../context/MyContext';
+import './categories.css';
 
 const FIVE = 5;
 
@@ -18,9 +19,10 @@ function Categories({ list }) {
   };
 
   return (
-    <section>
+    <section className="categories">
       <button
         type="button"
+        className="categories-button"
         onClick={ () => logSearch() }
         data-testid="All-category-filter"
       >
@@ -30,6 +32,7 @@ function Categories({ list }) {
         <button
           type="button"
           key={ i }
+          className="categories-button"
           data-testid={ `${strCategory}-category-filter` }
           onClick={ () => logSearch(strCategory) }
         >
