@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
@@ -6,22 +6,13 @@ import Header from '../components/Header';
 import useFetch from '../hooks/useFetch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './explore.css';
+import Loading from './Loading';
 
 function ExploreByIngredients({ match: { params: { type } } }) {
   const [mainKey, API, meals] = type === 'comidas'
     ? ['meals', 'meal', true] : ['drinks', 'cocktail', false];
 
   const data = useFetch('', 'ingredients', meals);
-
-  useEffect(() => {
-    // setEndpoint('ingredient');
-  }, []);
-
-  // const handleClick = async (name) => {
-  //   const response = await fetch(`https://www.the${API}db.com/api/json/v1/1/filter.php?i=${name}`);
-  //   const newData = await response.json();
-  //   return newData[mainKey];
-  // };
 
   if (data && data[mainKey]) {
     const TWELVE = 12;
@@ -39,7 +30,6 @@ function ExploreByIngredients({ match: { params: { type } } }) {
                   pathname: `/${type}`,
                   state: { ingredient: ingredientName },
                 } }
-                // onClick={ () => handleClick(ingredientName) }
                 key={ i }
                 className="card"
                 data-testid={ `${i}-ingredient-card` }
@@ -61,9 +51,7 @@ function ExploreByIngredients({ match: { params: { type } } }) {
     );
   }
 
-  return (
-    <h1>Loading...</h1>
-  );
+  return (<Loading />);
 }
 
 ExploreByIngredients.propTypes = {

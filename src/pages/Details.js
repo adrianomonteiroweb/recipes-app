@@ -7,6 +7,7 @@ import Carousel from '../components/Carousel';
 import StartButton from '../components/StartButton';
 import RecipeInstructions from '../components/RecipeInstructions';
 import RecipeHeader from '../components/RecipeHeader';
+import Loading from './Loading';
 
 const SIX = 6;
 
@@ -78,11 +79,7 @@ function Details({ match: { params: { id, type } } }) {
     );
   }
 
-  return (
-    <section>
-      <h1>Detalhes</h1>
-    </section>
-  );
+  return (<Loading />);
 }
 
 Details.propTypes = {
