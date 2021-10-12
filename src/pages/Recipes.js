@@ -25,7 +25,6 @@ function Recipes({ location: { state } }) {
   const { meals } = useFetch(query, endpoint, true);
 
   const data = meals;
-  console.log(data);
   const categoriesData = useFetch('list', 'categories', true);
 
   if (data && data.length < 2 && endpoint !== 'byCategory') {

@@ -21,31 +21,29 @@ function ExploreByType({ match: { params: { type } } }) {
           <Link
             to={ `/explorar/${type}/ingredientes` }
             data-testid="explore-by-ingredient"
-            className="link"
+            className="shadowBox row flex-column"
             style={ { textDecoration: 'none' } }
           >
-            <div className="shadowBox">
-              <h5>Por Ingredientes</h5>
-            </div>
+            <h5>Por Ingredientes</h5>
+
           </Link>
           { type === 'comidas' && (
             <Link
               to="/explorar/comidas/area"
               data-testid="explore-by-area"
+              className="shadowBox row flex-column"
               style={ { textDecoration: 'none' } }
             >
-              <div className="shadowBox">
-                <h5>Por Local de Origem</h5>
-              </div>
+              <h5>Por Local de Origem</h5>
+
             </Link>)}
           <Link
             to={ `/${type}/${data[mainKey][0][`id${keys}`]}` }
             data-testid="explore-surprise"
             style={ { textDecoration: 'none' } }
+            className="shadowBox row flex-column "
           >
-            <div className="shadowBox ">
-              <h5>Me Surpreenda!</h5>
-            </div>
+            <h5>Me Surpreenda!</h5>
           </Link>
         </div>
 
