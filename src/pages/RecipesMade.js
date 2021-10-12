@@ -27,7 +27,7 @@ function RecipesMade() {
     );
   }
   const selecType = (element) => {
-    const value = JSON.parse(localStorage.getItem('doneRecipes'));
+    const value = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     setTypeRecipes(value.filter((recipes) => recipes.type.includes(element)));
   };
 
@@ -64,7 +64,7 @@ function RecipesMade() {
       </div>
       <div className="afterMap">
         {typeRecipes.map((receita, index) => {
-          const area = receita.area ? `${receita.area}-` : '';
+          const area = receita.area ? `${receita.area} - ` : '';
           return (
             <div key={ receita.id } className="allCards">
               <Link to={ `${receita.type}s/${receita.id}` }>

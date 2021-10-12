@@ -22,7 +22,6 @@ function ExploreByArea() {
     const newEndpoint = newQuery === '' ? '' : 'area';
     setEndpoint(newEndpoint);
   };
-  console.log(areasData);
 
   if (areasData.meals && meals) {
     const TWELVE = 12;

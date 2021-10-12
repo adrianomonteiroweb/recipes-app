@@ -16,6 +16,7 @@ function Recipes({ location: { state } }) {
   const { searchBar: { query, endpoint, setEndpoint, setQuery } } = useContext(MyContext);
 
   useEffect(() => {
+    console.log(state);
     if (state && state.ingredient) {
       setEndpoint('ingredient');
       setQuery(state.ingredient);
