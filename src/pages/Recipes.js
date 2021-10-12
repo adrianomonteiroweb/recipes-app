@@ -9,7 +9,6 @@ import MealCard from '../components/MealCard';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 import './recipes.css';
-import Loading from './Loading';
 
 const TWELVE = 12;
 
@@ -17,7 +16,6 @@ function Recipes({ location: { state } }) {
   const { searchBar: { query, endpoint, setEndpoint, setQuery } } = useContext(MyContext);
 
   useEffect(() => {
-    console.log(state);
     if (state && state.ingredient) {
       setEndpoint('ingredient');
       setQuery(state.ingredient);
@@ -53,7 +51,7 @@ function Recipes({ location: { state } }) {
     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
-  return <Loading />;
+  return <h1>Loading...</h1>;
 }
 
 Recipes.propTypes = {

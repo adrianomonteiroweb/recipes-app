@@ -14,11 +14,7 @@ function Footer() {
       <Link to="/explorar">
         <img src={ exploreIcon } alt="explore" data-testid="explore-bottom-btn" />
       </Link>
-      <Link
-        to={ {
-          pathname: '/comidas',
-          state: '' } }
-      >
+      <Link to="/comidas">
         <img src={ mealIcon } alt="meal" data-testid="food-bottom-btn" />
       </Link>
     </footer>
