@@ -5,6 +5,7 @@ import useFetch from '../hooks/useFetch';
 import MyContext from '../context/MyContext';
 import MealCard from '../components/MealCard';
 import './explore.css';
+import Loading from './Loading';
 
 function ExploreByArea() {
   const { searchBar: { query, endpoint, setQuery, setEndpoint } } = useContext(MyContext);
@@ -59,7 +60,7 @@ function ExploreByArea() {
   return (
     <>
       <Header title="Explorar Origem" displaySearchBar />
-      <h1>Loading...</h1>
+      <Loading />
       <Footer />
     </>
   );

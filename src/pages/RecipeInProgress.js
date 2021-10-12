@@ -7,6 +7,7 @@ import './recipeInProgress.css';
 import './details.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useFetch from '../hooks/useFetch';
+import Loading from './Loading';
 
 const setRecipeDone = (recipe, keys, type) => {
   const recipeDone = {
@@ -131,7 +132,7 @@ const RecipeInProgress = ({ match: { params: { id, type } } }) => {
     );
   }
 
-  return (<h1>Loading...</h1>);
+  return (<Loading />);
 };
 
 RecipeInProgress.propTypes = {

@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import useFetch from '../hooks/useFetch';
 import Header from '../components/Header';
 import './explore.css';
+import Loading from './Loading';
 
 function ExploreByType({ match: { params: { type } } }) {
   const [meals, mainKey, keys, headerTitle] = type === 'comidas'
@@ -53,7 +54,7 @@ function ExploreByType({ match: { params: { type } } }) {
     );
   }
 
-  return (<h1>Loading...</h1>);
+  return (<Loading />);
 }
 
 ExploreByType.propTypes = {

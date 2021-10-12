@@ -8,6 +8,7 @@ import MyContext from '../context/MyContext';
 import BeverageCard from '../components/BeverageCard';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
+import Loading from './Loading';
 
 const TWELVE = 12;
 
@@ -49,7 +50,7 @@ function Beverages({ location: { state } }) {
     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
-  return <h1>Loading...</h1>;
+  return <Loading />;
 }
 
 Beverages.propTypes = {
