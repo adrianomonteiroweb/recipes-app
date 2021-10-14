@@ -18,7 +18,7 @@ const setRecipeDone = (recipe, keys, type) => {
     alcoholicOrNot: recipe.strAlcoholic || '',
     name: recipe[`str${keys}`],
     image: recipe[`str${keys}Thumb`],
-    doneDate: new Date(),
+    doneDate: new Date().toLocaleDateString('pt-BR'),
     tags: [recipe.strTags] || [],
   };
   console.log(recipe.strTags);

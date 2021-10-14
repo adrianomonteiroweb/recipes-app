@@ -20,21 +20,22 @@ const RecipesFav = () => {
     setFav(remove);
   };
   return (
-    <div>
+    <div className="allRender">
       <Header title="Receitas Favoritas" />
-      <div>
+      <div className="divBtnCss">
         <button
           type="button"
           data-testid="filter-by-all-btn"
           onClick={ () => selecType('') }
+          className="allBtn"
         >
-          all
-
+          All
         </button>
         <button
           type="button"
           data-testid="filter-by-food-btn"
           onClick={ () => selecType('comida') }
+          className="foodBtn"
         >
           Food
         </button>
@@ -42,6 +43,7 @@ const RecipesFav = () => {
           type="button"
           data-testid="filter-by-drink-btn"
           onClick={ () => selecType('bebida') }
+          className="drinkBtn"
         >
           Drinks
         </button>
@@ -49,36 +51,49 @@ const RecipesFav = () => {
       {fav && fav.map((
         { id, name, type, image, category, area, alcoholicOrNot },
         index,
-      ) => (
-        <div key={ index }>
-          <Link to={ `${type}s/${id}` }>
-            <img
-              src={ image }
-              data-testid={ `${index}-horizontal-image` }
-              alt={ name }
-              style={ { maxWidth: '20%' } }
-            />
-          </Link>
-          <Link to={ `${type}s/${id}` }>
-            <h1 data-testid={ `${index}-horizontal-name` }>{name}</h1>
-          </Link>
-          <p data-testid={ `${index}-horizontal-top-text` }>
-            {`${area} - ${category} ${alcoholicOrNot}`}
-          </p>
-          <Share type={ `${type}s` } id={ id } index={ index } />
-          <button
-            type="button"
-            onClick={ () => removeFav(id) }
-          >
-            <img
-              src={ blackHeartIcon }
-              alt="blackHeartIcon"
-              data-testid={ `${index}-horizontal-favorite-btn` }
-            />
-          </button>
+      ) => {
+        const Typearea = area ? `${area} - ` : '';
+        return (
+          <div key={ index } className="allCards">
+            <Link to={ `${type}s/${id}` }>
+              <img
+                className="imgCss"
+                src={ image }
+                data-testid={ `${index}-horizontal-image` }
+                alt={ name }
+                style={ { maxWidth: '100%' } }
+              />
+            </Link>
+            <p data-testid={ `${index}-horizontal-top-text` } className="paraCss">
+              {`${Typearea}  ${category} ${alcoholicOrNot}`}
+            </p>
+            <Link to={ `${type}s/${id}` }>
 
-        </div>
-      ))}
+              <h3
+                data-testid={ `${index}-horizontal-name` }
+                className="recipeCss"
+              >
+                {name}
+              </h3>
+            </Link>
+            <div className="groupButtons">
+              <Share type={ `${type}s` } id={ id } index={ index } />
+              <button
+                type="button"
+                onClick={ () => removeFav(id) }
+                className="buttonClick"
+              >
+                <img
+                  src={ blackHeartIcon }
+                  alt="blackHeartIcon"
+                  data-testid={ `${index}-horizontal-favorite-btn` }
+                  className="buttonImg"
+                />
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -9,7 +9,6 @@ import MealCard from '../components/MealCard';
 import Footer from '../components/Footer';
 import Categories from '../components/Categories';
 import './recipes.css';
-import Loading from './Loading';
 
 const TWELVE = 12;
 
@@ -26,7 +25,6 @@ function Recipes({ location: { state } }) {
   const { meals } = useFetch(query, endpoint, true);
 
   const data = meals;
-  console.log(data);
   const categoriesData = useFetch('list', 'categories', true);
 
   if (data && data.length < 2 && endpoint !== 'byCategory') {
@@ -52,7 +50,7 @@ function Recipes({ location: { state } }) {
     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
-  return <Loading />;
+  return <h1>Loading...</h1>;
 }
 
 Recipes.propTypes = {

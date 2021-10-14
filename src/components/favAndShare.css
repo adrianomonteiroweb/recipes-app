@@ -7,3 +7,9 @@
 .buttonImg {
   max-width: 100%;
 }
+
+.groupButtons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

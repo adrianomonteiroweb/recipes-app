@@ -13,20 +13,17 @@ function Explore() {
           to="/explorar/comidas"
           data-testid="explore-food"
           style={ { textDecoration: 'none' } }
+          className="shadowBox row flex-column"
         >
-          <div className="shadowBox row flex-column">
-            <h5> Explorar Comidas</h5>
-          </div>
+          <h5> Explorar Comidas</h5>
         </Link>
         <Link
           to="/explorar/bebidas"
           data-testid="explore-drinks"
-          className="link"
+          className="shadowBox row flex-column"
           style={ { textDecoration: 'none' } }
         >
-          <div className="shadowBox row flex-column">
-            <h5>Explorar Bebidas</h5>
-          </div>
+          <h5>Explorar Bebidas</h5>
         </Link>
       </div>
       <Footer />
